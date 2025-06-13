@@ -10,3 +10,11 @@ class Job(models.Model):
 
     def __str__(self):
         return f"{self.title} - {self.company}"
+    
+class Resume(models.Model):
+    file = models.FileField(upload_to='resumes/')
+    content = models.TextField(blank=True)                 # 擷取出來的文字
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.file.name

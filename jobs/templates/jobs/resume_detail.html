@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>履歷內容預覽</title>
+</head>
+<body>
+    {% if resume %}
+        <h1>履歷檔案：{{ resume.file.name|default:"找不到檔案！" }}</h1>
+        <small>實體路徑:{{ resume.file.path }}</small>
+        <p>上傳時間：{{ resume.uploaded_at|date:"Y-m-d H:i" }}</p>
+        <h2>擷取文字內容：</h2>
+        <pre style="white-space: pre-wrap;">{{ resume.content|default:" (尚未擷取內容或空白) " }}</pre>
+    {% else %}
+        <h1>履歷檔案：找不到檔案！</h1>
+    {% endif %}
+    
+    <a href="{% url 'job_list' %}">返回職缺列表</a>
+</body>
+</html>

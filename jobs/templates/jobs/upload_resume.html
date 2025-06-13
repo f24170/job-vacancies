@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>上傳履歷</title>
+</head>
+<body>
+    <h1>上傳履歷 (PDF) </h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">上傳</button>
+    </form>
+    <a href="{% url 'job_list' %}">返回職缺列表</a>
+</body>
+</html>
