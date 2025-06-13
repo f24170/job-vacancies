@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_list_or_404
 from django.conf import settings
 from .models import Job, Resume
 from .forms import JobFrom, ResumeForm
-from .utils import extract_text_from_pdf
+from .utils import extract_text_from_pdf, recommend_jobs
 import os
 
 def job_list(request):
@@ -27,6 +27,9 @@ def upload_resume(request):
             resume_path = resume.file.path
             resume.content = extract_text_from_pdf(resume_path)
             resume.save()
+
+            recommendations = recommend_jobs(resume.content)
+
             return redirect('resume_detail', pk=resume.pk)   # 導回上傳成功頁面
     else:
         form = ResumeForm()
@@ -37,5 +40,5 @@ def resume_detail(request, pk):
         resume = Resume.objects.get(pk=pk)
     except Resume.DoesNotExist:
         return render(request, 'jobs/resume_detail.html', {'resume': None})
-    
+
     return render(request, 'jobs/resume_detail.html', {'resume':resume})
