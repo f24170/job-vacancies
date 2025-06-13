@@ -1,6 +1,22 @@
+# 虛擬環境
 venv/
+
+# Python 編譯檔
 __pycache__/
-*.pyc
+*.py[cod]
+
+# 資料庫
 db.sqlite3
+
+# 日誌檔案
 *.log
+
+# 環境設定檔
 .env
+
+# 上傳的履歷檔案
+media/
+
+# Tesseract 安裝檔（如曾下載）
+*.exe
+*.msi
