@@ -1,0 +1,16 @@
+<!-- create_job.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>新增職缺</title>
+</head>
+<body>
+    <h1>新增職缺</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">提交</button>
+    </form>
+    <a href="{% url 'job_list' %}">返回職缺列表</a>
+</body>
+</html>
