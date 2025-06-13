@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>職缺列表</title>
+</head>
+<body>
+    <h1>職缺列表</h1>
+    <ul>
+        {% for job in jobs %}
+            <li>{{ job.title }} - {{ job.company }}</li>
+        {% empty %}
+            <li>目前尚無職缺</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_job' %}">新增職缺</a>
+</body>
+</html>
