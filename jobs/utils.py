@@ -26,6 +26,11 @@ def extract_text_from_pdf(file_path):
     return text.strip()
 
 def recommend_jobs(resume_text, top_n=3):
+    # 如果履歷內容錯誤或空，回傳空列表
+    if not resume_text.strip():
+        print("履歷內容錯誤或為空，略過推薦")
+        return []
+
     jobs = Job.objects.all()
     job_texts = [job.title + " " + job.company for job in jobs]
     corpus = [resume_text] + job_texts

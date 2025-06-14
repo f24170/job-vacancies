@@ -13,7 +13,12 @@
     {% else %}
         <h1>履歷檔案：找不到檔案！</h1>
     {% endif %}
-    
+        <h3>系統推薦的職缺：</h3>
+        <ul>
+            {% for job, score in recommendations %}
+                <li><strong>{{ job.title }}</strong>（{{ job.company }}） - 相似度：{{ score|floatformat:2 }}</li>
+            {% endfor %}
+        </ul>
     <a href="{% url 'job_list' %}">返回職缺列表</a>
 </body>
 </html>
